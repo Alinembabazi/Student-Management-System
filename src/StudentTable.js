@@ -1,6 +1,8 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
+
 export default function StudentTable() {
 // console.log(useState(1))
 const [students,setStudents]= useState([]);
@@ -22,13 +24,12 @@ return (
     </h2>
 
     <div className="mb-4">
-        <a
-        href="#"
+        <Link
+        href="/student/create"
         className="inline-block rounded-md bg-purple-700 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-purple-800"
         >
         Add new Student
-        </a>
-        {/* <Link class="btn btn-add"> add new student</Link> */}
+        </Link>
     </div>
 
     <div className="overflow-x-auto rounded-lg border border-slate-200">
@@ -43,78 +44,31 @@ return (
             </tr>
         </thead>
         <tbody>
-            <tr className="border-t border-slate-200 bg-white">
-            <td className="px-4 py-3 text-slate-700">1</td>
-            <td className="px-4 py-3 text-slate-700">Aline</td>
-            <td className="px-4 py-3 text-slate-700">Nyamirambo</td>
-            <td className="px-4 py-3 text-slate-700">0780304991</td>
-            <td className="px-4 py-3">
-                <div className="flex gap-2">
-                <a
-                    href="#"
-                    className="rounded bg-cyan-500 px-3 py-1 text-xs font-semibold text-white hover:bg-cyan-600"
-                >
-                    View
-                </a>
-                <a
-                    href="#"
-                    className="rounded bg-purple-600 px-3 py-1 text-xs font-semibold text-white hover:bg-purple-700"
-                >
-                    Edit
-                </a>
-                <a
-                    href="#"
-                    className="rounded bg-rose-500 px-3 py-1 text-xs font-semibold text-white hover:bg-rose-600"
-                >
-                    Delete
-                </a>
-                </div>
-            </td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr className="border-t border-slate-200 bg-white">
-            <td className="px-4 py-3 text-slate-700">2</td>
-            <td className="px-4 py-3 text-slate-700">Mugisha</td>
-            <td className="px-4 py-3 text-slate-700">Musanze</td>
-            <td className="px-4 py-3 text-slate-700">078477795</td>
-            <td className="px-4 py-3">
-                <div className="flex gap-2">
-                <a
-                    href="#"
-                    className="rounded bg-cyan-500 px-3 py-1 text-xs font-semibold text-white hover:bg-cyan-600"
-                >
-                    View
-                </a>
-                <a
-                    href="#"
-                    className="rounded bg-purple-600 px-3 py-1 text-xs font-semibold text-white hover:bg-purple-700"
-                >
-                    Edit
-                </a>
-                <a
-                    href="#"
-                    className="rounded bg-rose-500 px-3 py-1 text-xs font-semibold text-white hover:bg-rose-600"
-                >
-                    Delete
-                </a>
-                </div>
-            </td>
-            </tr>
-        </tbody>
-
-        <tbody>
             {students.map((item) => (
               <tr key={item.id} className="border-t border-slate-200 bg-white">
                 <td className="px-4 py-3 text-slate-700">{item.id}</td>
                 <td className="px-4 py-3 text-slate-700">{item.name}</td>
-                <td className="px-4 py-3 text-slate-700">{item.place}</td>
+                <td className="px-4 py-3 text-slate-700">{item.place || item.Place}</td>
                 <td className="px-4 py-3 text-slate-700">{item.phone}</td>
                 <td className="px-4 py-3">
                   <div className="flex gap-2">
-                    <a href="#" className="rounded bg-cyan-500 px-3 py-1 text-xs font-semibold text-white hover:bg-cyan-600">View</a>
-                    <a href="#" className="rounded bg-purple-600 px-3 py-1 text-xs font-semibold text-white hover:bg-purple-700">Edit</a>
-                    <a href="#" className="rounded bg-rose-500 px-3 py-1 text-xs font-semibold text-white hover:bg-rose-600">Delete</a>
+                    <Link
+                      href={"/student/" + item.id}
+                      className="rounded bg-cyan-500 px-3 py-1 text-xs font-semibold text-white hover:bg-cyan-600"
+                    >
+                      View
+                    </Link>
+                    <Link
+                      href={"/student/edit/" + item.id}
+                      className="rounded bg-purple-600 px-3 py-1 text-xs font-semibold text-white hover:bg-purple-700"
+                    >
+                      Edit
+                    </Link>
+                    <button
+                      className="rounded bg-rose-500 px-3 py-1 text-xs font-semibold text-white hover:bg-rose-600"
+                    >
+                      Delete
+                    </button>
                   </div>
                 </td>
               </tr>
