@@ -24,7 +24,7 @@ export default function CreateStudent() {
         setError('');
 
         try {
-            const response = await fetch('http://localhost:8000/students', {
+            const response = await fetch('/api/students', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -38,7 +38,7 @@ export default function CreateStudent() {
 
             router.push('/');
         } catch (err) {
-            setError('Unable to create student. Make sure json-server is running on http://localhost:8000.');
+            setError('Unable to create student.');
             console.error(err);
         }
     };

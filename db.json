@@ -1,33 +1,34 @@
 {
-    
   "students": [
     {
       "id": 1,
       "name": "Aline",
-      "Place": "Mumbai",
+      "place": "Mumbai",
       "phone": "0780304991"
     },
     {
       "id": 2,
       "name": "Eric",
-      "Place": "Kigali",
+      "place": "Kigali",
       "phone": "0780304992"
-
     },
     {
       "id": 3,
       "name": "Lux",
-      "Place": "Musanze",
+      "place": "Musanze",
       "phone": "0780304992"
-
     },
     {
       "id": 4,
       "name": "Kampire",
-      "Place": "Gicumbi",
+      "place": "Gicumbi",
       "phone": "0780304992"
-
+    },
+    {
+      "id": 5,
+      "name": "Bogi",
+      "place": "Rubavu",
+      "phone": "+250780304991"
     }
   ]
-
 }

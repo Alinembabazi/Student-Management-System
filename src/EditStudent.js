@@ -16,8 +16,14 @@ export default function EditStudent(){
   useEffect(() => {
     if (!params.id) return;
     
-    fetch(`http://localhost:8000/students/${params.id}`)
-      .then(res => res.json())
+    fetch(`/api/students/${params.id}`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`Request failed with status ${res.status}`);
+        }
+
+        return res.json();
+      })
       .then(data => {
         setStudent(data);
         setLoading(false);
@@ -42,7 +48,7 @@ export default function EditStudent(){
     setError('');
 
     try {
-      const response = await fetch(`http://localhost:8000/students/${params.id}`, {
+      const response = await fetch(`/api/students/${params.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -56,7 +62,7 @@ export default function EditStudent(){
 
       router.push('/');
     } catch (err) {
-      setError('Unable to update student. Make sure json-server is running on http://localhost:8000.');
+      setError('Unable to update student.');
       console.error(err);
     }
   };

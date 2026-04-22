@@ -11,8 +11,14 @@ export default function ViewDetail(){
     useEffect(() => {
         if (!params.id) return;
         
-        fetch(`http://localhost:8000/students/${params.id}`)
-            .then(res => res.json())
+        fetch(`/api/students/${params.id}`)
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error(`Request failed with status ${res.status}`);
+                }
+
+                return res.json();
+            })
             .then(data => {
                 setStudent(data);
                 setLoading(false);
@@ -33,7 +39,7 @@ export default function ViewDetail(){
             <div className="student-detail">
                 <p><strong>ID:</strong> {student.id}</p>
                 <p><strong>Name:</strong> {student.name}</p>
-                <p><strong>Place:</strong> {student.Place || student.place}</p>
+                <p><strong>Place:</strong> {student.place}</p>
                 <p><strong>Phone:</strong> {student.phone}</p>
             </div>
         </div>
